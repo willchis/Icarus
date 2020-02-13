@@ -25,7 +25,7 @@ namespace Icarus.Data
         {
             Items = new List<Fuel>();
 
-            var uri = new Uri(string.Format(Constants.GenerationStats, string.Empty));
+            var uri = new Uri(Constants.GenerationStats);
             try
             {
                 var response = await _client.GetAsync(uri);
@@ -34,7 +34,7 @@ namespace Icarus.Data
                     var content = await response.Content.ReadAsStringAsync();
                     var generationMix = JsonConvert.DeserializeObject<CarbonMixReponse>(content);
                     // Convert to Fuel model
-                    Items = generationMix.data.generationmix.Select(x => new Fuel(x.fuel, x.perc)).ToList();
+                    Items = generationMix.data.generationmix.OrderByDescending(x => x.perc).Select(x => new Fuel(x.fuel, x.perc)).ToList();
                 }
             }
             catch (Exception ex)

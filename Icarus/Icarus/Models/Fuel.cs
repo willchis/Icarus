@@ -9,7 +9,7 @@ namespace Icarus.Models
         public Fuel (string name, double percentageUse)
         {
             Name = name;
-            PercentUse = percentageUse.ToString();
+            PercentUse = percentageUse.ToString() + "%";
         }
 
         public string Name { get; set; }
