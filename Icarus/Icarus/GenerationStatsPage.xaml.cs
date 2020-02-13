@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Xamarin.Forms;
-using Icarus.Models;
+﻿using Xamarin.Forms;
 
 namespace Icarus
 {
@@ -17,9 +12,10 @@ namespace Icarus
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            activityMonitor.IsVisible = true;
 
             listView.ItemsSource = await App.GenerationMixManager.GetTasksAsync();
-
+            activityMonitor.IsVisible = false;
         }
     }
 }

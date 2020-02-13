@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Icarus.OverviewPage"
              Title="Overview">
-    <StackLayout Spacing="0" Padding="0" BackgroundColor="Black">
+    <StackLayout Spacing="0" Padding="20" BackgroundColor="Black">
         
         <StackLayout Orientation="Horizontal">
             <Label Text="SEO RATING" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="100" />

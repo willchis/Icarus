@@ -13,11 +13,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Text="Save"
-                    Clicked="OnSaveButtonClicked" />
-            <Button Grid.Column="1"
-                    Text="Delete"
-                    Clicked="OnDeleteButtonClicked"/>
+            <Button Text="Save" Clicked="OnSaveButtonClicked" />
+            <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
         </Grid>
     </StackLayout>
 </ContentPage>
