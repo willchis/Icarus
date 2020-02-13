@@ -24,6 +24,9 @@ namespace Icarus
 							navPage.PushAsync(new OverviewPage());
 							break;
 						case "2":
+							navPage.PushAsync(new GenerationStatsPage());
+							break;
+						case "3":
 							navPage.PushAsync(new NotesPage());
 							break;
 					}
