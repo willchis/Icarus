@@ -12,15 +12,18 @@ namespace Icarus.Data
     public class RestService : IRestService
     {
         HttpClient _client;
+        private const string _apiKey = "17e7963b48fd4e74bae7ca1ef7eb8176";
 
         public List<Fuel> Items { get; private set; }
+
+        public Headlines Headlines { get; private set; }
 
         public RestService()
         {
             _client = new HttpClient();
         }
 
-        public async Task<List<Fuel>> RefreshDataAsync()
+        public async Task<List<Fuel>> GetFuelMixAsync()
         {
             Items = new List<Fuel>();
 
@@ -43,6 +46,31 @@ namespace Icarus.Data
 
             return Items;
         }
+
+        public async Task<Headlines> GetHeadlinesAsync()
+        {
+            var uri = new Uri("http://newsapi.org/v2/top-headlines?country=us&apiKey=" + _apiKey);
+            Items = new List<Fuel>();
+
+            try
+            {
+                var response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    Headlines = JsonConvert.DeserializeObject<Headlines>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return Headlines;
+        }
+
+        //
+
 
         //public async Task SaveTodoItemAsync(TodoItem item, bool isNewItem = false)
         //{
