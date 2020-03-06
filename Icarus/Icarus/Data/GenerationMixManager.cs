@@ -16,7 +16,7 @@ namespace Icarus.Data
 
 		public Task<List<Fuel>> GetTasksAsync ()
 		{
-			return restService.RefreshDataAsync ();	
+			return restService.GetFuelMixAsync ();	
 		}
 
 		//public Task SaveTaskAsync (TodoItem item, bool isNewItem = false)
