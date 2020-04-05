@@ -20,7 +20,7 @@ namespace Icarus
             MainPage = new MasterDetailPage()
             {
                 Master = new MasterPage() { Title = "Main Page" },
-                Detail = new NavigationPage(new OverviewPage())
+                Detail = new NavigationPage(new LoginPage())
             };
         }
         // ...

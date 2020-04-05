@@ -21,7 +21,7 @@ namespace Icarus
 					switch (value)
 					{
 						case "1":
-							navPage.PushAsync(new OverviewPage());
+							navPage.PushAsync(new LoginPage());
 							break;
 						case "2":
 							navPage.PushAsync(new GenerationStatsPage());

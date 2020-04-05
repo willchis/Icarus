@@ -32,8 +32,8 @@
     <Compile Update="GenerationStatsPage.xaml.cs">
       <DependentUpon>GenerationStatsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="OverviewPage.xaml.cs">
-      <DependentUpon>OverviewPage.xaml</DependentUpon>
+    <Compile Update="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
