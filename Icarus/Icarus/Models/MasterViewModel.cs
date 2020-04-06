@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Icarus
+namespace Icarus.Models
 {
 	public class MasterViewModel
 	{
@@ -17,19 +17,22 @@ namespace Icarus
 
 					// Hide the Master page
 					mdp.IsPresented = false;
+					Page pageToNavTo = new OverviewPage();
 
 					switch (value)
 					{
 						case "1":
-							navPage.PushAsync(new LoginPage());
+							navPage.PopToRootAsync();
 							break;
 						case "2":
-							navPage.PushAsync(new GenerationStatsPage());
+							pageToNavTo = new GenerationStatsPage();
 							break;
 						case "3":
-							navPage.PushAsync(new NotesPage());
+							pageToNavTo = new NotesPage();
 							break;
 					}
+					NavigationPage.SetHasBackButton(pageToNavTo, false);
+					navPage.PushAsync(pageToNavTo, false);
 
 				});
 			}

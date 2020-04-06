@@ -17,11 +17,8 @@ namespace Icarus
             InitializeComponent();
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
 
-            MainPage = new MasterDetailPage()
-            {
-                Master = new MasterPage() { Title = "Main Page" },
-                Detail = new NavigationPage(new LoginPage())
-            };
+            MainPage = new LoginPage();
+            
         }
         // ...
     }

@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Icarus.GenerationStatsPage"
              Title="UK Power Generation">
-    <Grid>
+    <Grid BackgroundColor="Black">
         <ActivityIndicator x:Name="activityMonitor" IsRunning="true" HorizontalOptions="CenterAndExpand"
             VerticalOptions="CenterAndExpand"/>
-        <ListView x:Name="listView" Margin="20">
+        <ListView x:Name="listView" Margin="20" BackgroundColor="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

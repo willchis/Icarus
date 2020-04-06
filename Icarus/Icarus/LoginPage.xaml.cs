@@ -13,6 +13,7 @@ namespace Icarus
     {
         public LoginPage()
         {
+            Title = "Login";
             var vm = new LoginViewModel();
             BindingContext = vm;
             vm.DisplayInvalidLoginPrompt += () => DisplayAlert("Error", "Invalid Login, try again", "OK");

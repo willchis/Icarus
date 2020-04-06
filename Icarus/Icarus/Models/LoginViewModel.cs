@@ -34,12 +34,25 @@ namespace Icarus.Models
         {
             SubmitCommand = new Command(OnSubmit);
         }
+
         public void OnSubmit()
         {
-            if (email != "macoratti@yahoo.com" || password != "secret")
+            var overview = new NavigationPage(new OverviewPage());
+            NavigationPage.SetHasBackButton(overview, false);
+
+            MasterDetailPage fpm = new MasterDetailPage()
             {
-                DisplayInvalidLoginPrompt();
-            }
+                Master = new MasterPage() { Title = "Menu" },
+                Detail = overview 
+            };
+            
+            Application.Current.MainPage = fpm;
+            
+            // POST to API
+            //if (email != "macoratti@yahoo.com" || password != "secret")
+            //{
+              //  DisplayInvalidLoginPrompt();
+            //}
         }
     }
 }
