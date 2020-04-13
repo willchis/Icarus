@@ -16,7 +16,10 @@ namespace Icarus
             Title = "Login";
             var vm = new LoginViewModel();
             BindingContext = vm;
-            vm.DisplayInvalidLoginPrompt += (text) => DisplayAlert("Error", text, "OK");
+            vm.DisplayInvalidLoginPrompt += (text) =>
+            {
+                DisplayAlert("Error", text, "OK");
+            };
 
             InitializeComponent();
 

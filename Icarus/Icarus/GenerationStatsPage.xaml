@@ -11,8 +11,8 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="20,0,0,0" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                            <Label Text="{Binding Name}" FontSize="Medium" MinimumWidthRequest="100" VerticalTextAlignment="Center" TextColor="White" BackgroundColor="Black"/>
-                            <Entry Text="{Binding PercentUse}" VerticalTextAlignment="Center" TextColor="White" BackgroundColor="Black" />
+                            <Label Text="{Binding Name}" FontSize="Medium" MinimumWidthRequest="100"  WidthRequest="70" VerticalTextAlignment="Center" TextColor="White" BackgroundColor="Black"/>
+                            <Label Text="{Binding PercentUse}" VerticalTextAlignment="Center" TextColor="White" BackgroundColor="Black" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

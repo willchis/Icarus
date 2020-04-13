@@ -22,7 +22,7 @@
                 <local:NavigationItem Text="UK Energy Stats" Icon="fa-archive" Command="{Binding NavigationCommand}" CommandParameter="2" />
                 <local:NavigationItem Text="Notes" Icon="fa-cog" Command="{Binding NavigationCommand}" CommandParameter="3" />
                 <ContentView HeightRequest="1" BackgroundColor="DarkGray" />
-                <local:NavigationItem Text="Account Settings" Icon="fa-cog" Command="{Binding NavigationCommand}" CommandParameter="2" />
+                <local:NavigationItem Text="Account Settings" Icon="fa-cog" Command="{Binding NavigationCommand}" CommandParameter="4" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

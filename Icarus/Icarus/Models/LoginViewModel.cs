@@ -47,13 +47,13 @@ namespace Icarus.Models
             SubmitCommand = new Command(OnSubmit);
         }
 
-        public void OnSubmit()
+        public async void OnSubmit()
         {
             var current = Connectivity.NetworkAccess;
 
             if (current == NetworkAccess.Internet)
             {
-                string sUrl = "https://whiteheart.on.teamlewis.com/api/authenticate";
+                string sUrl = "https://whiteheart.on.teamlewis.com/api/authenticate/authenticate";
                 string sContentType = "application/json";
 
                 JObject json = new JObject();
@@ -61,42 +61,40 @@ namespace Icarus.Models
                 json.Add("password", password);
 
                 HttpClient client = new HttpClient();
-                var post = client.PostAsync(sUrl, new StringContent(json.ToString(), Encoding.UTF8, sContentType));
-                post.ContinueWith((response) =>
-                {
+                var response = await client.PostAsync(sUrl, new StringContent(json.ToString(), Encoding.UTF8, sContentType));
+                
                     // response of post here
-                    if (!response.Result.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
+                {
+                    DisplayInvalidLoginPrompt("An error occurred:" + response.StatusCode);
+                    return;
+                }
+
+                var content = response.Content.ReadAsStringAsync().Result;
+
+                var user = JsonConvert.DeserializeObject<UserDto>(content);
+                if (user != null && !string.IsNullOrWhiteSpace(user.Token))
+                {
+                    var overview = new NavigationPage(new OverviewPage());
+                    NavigationPage.SetHasBackButton(overview, false);
+
+                    MasterDetailPage fpm = new MasterDetailPage()
                     {
-                        DisplayInvalidLoginPrompt("An error occurred:" + response.Result.StatusCode);
-                        return;
-                    }
+                        Master = new MasterPage() { Title = "Menu", },
+                        Detail = overview
+                    };
 
-                    var content = response.Result.Content.ReadAsStringAsync().Result;
-
-                    var user = JsonConvert.DeserializeObject<UserDto>(content);
-                    if (user != null && !string.IsNullOrWhiteSpace(user.Token))
-                    {
-                        var overview = new NavigationPage(new OverviewPage());
-                        NavigationPage.SetHasBackButton(overview, false);
-
-                        MasterDetailPage fpm = new MasterDetailPage()
-                        {
-                            Master = new MasterPage() { Title = "Menu" },
-                            Detail = overview
-                        };
-
-                        Application.Current.MainPage = fpm;
-                    } else
-                    {
-                        DisplayInvalidLoginPrompt("Invalid login, please try again.");
-                    }
-
-                });
+                    Application.Current.MainPage = fpm;
+                } else
+                {
+                    DisplayInvalidLoginPrompt("Invalid login, please try again.");
+                }
                 
             } else
             {
                 DisplayInvalidLoginPrompt("No internet connection available!");
             }
+            
         }
     }
 }
